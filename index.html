@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="funcionesIniciales()">
+    <!-- <div id="container">
+        <div id="cabecera" class="flex-row flex-end">
+            <img src="" alt="" class="img ">
+            <label>Nombre</label>
+        </div>-->
+   
+    <div class="row">
+        <div class="col-3">1</div>
+        <div class="col-9">  
+
+            <div class="row marb-1">
+
+                <div class="col-4">
+                    <label for="" class="form-label">Tipo de proveedor (*)</label>
+                    <select onchange="mostrarTipoDeDocumento()" name="" id="selectProveedor" class="form-control">
+                    </select>
+                </div>
+                <div class="col-4">
+                    <label for="" class="form-label">Tipo de documento (*)</label>
+                    <select  name="" id="selectTipoDocumento" class="form-control">
+                        <option value="" hidden>Seleccione</option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <label for="" class="form-label">Número de documento (*)</label>
+                    <input id="numeroDocumento" type="text" class="form-control">
+                </div>
+
+            </div>
+
+            <div class="row marb-1">
+
+                <div class="col-4">
+                    <label for="" class="form-label">Card NIFF</label>
+                    <input id="cardNiff" type="text" class="form-control">
+                </div>
+                <div class="col-4">
+                    <label for="" class="form-label">Razón social (*)</label>
+                    <input id="razonSocial" type="text" class="form-control">
+                </div>
+                <div class="col-4">
+                    <label for="" class="form-label">Nombre Comercial (*)</label>
+                    <input id="nombreComercial" type="text" class="form-control">
+                </div>
+
+            </div>
+
+            <div class="row marb-1">
+                <div class="col-4">
+                    <label for="" class="form-label">Siglas</label>
+                    <input id="siglas" type="text" class="form-control">
+                </div>
+                <div class="col-4">
+                    <label for="" id="labelPais" class="form-label">País (*)</label>
+                    <select onchange="mostrarRegion()"  name="" id="pais" class="form-control">
+                        <option value="" hidden>Seleccione</option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <label for="" class="form-label">Departamento (*)</label>
+                    <select onchange="mostrarProvincias()" name="" id="region" class="form-control">
+                        <option value="" ></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row marb-1">
+                <div class="col-4">
+                    <label for="" class="form-label">Provincia (*)</label>
+                    <select onchange="mostrarDistritos()" name="" id="ciudad" class="form-control">
+                        <option value="" ></option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <label for="" class="form-label">Distrito (*)</label>
+                    <select  name="" id="distrito" class="form-control">
+                        <option value="" ></option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <label for="" class="form-label">Dirección Fiscal (*)</label>
+                    <input id="direccionFiscal" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="row marb-1">
+                <div class="col-4">
+                    <label for="" class="form-label">Código Postal</label>
+                    <input id="codigoPostal" type="text" class="form-control">
+                </div>
+                <div class="col-4">
+                    <label for="" class="form-label">Rubro (*)</label>
+                    <input id="rubro" type="text" class="form-control">
+                </div>
+                <div class="col-4">
+                    <label for="" class="form-label">Condición Sunat (*)</label>
+                    <input id="condicionSunat" type="text" class="form-control">
+                </div>
+            </div>
+
+            <div class="row marb-1">
+               <div class="col-4">
+                   <div class="flex-row">
+                        <div class="w-45 mr-10">
+                            <label class="form-label">Anexo</label>
+                            <input id="anexo1" type="text" class="form-control">
+                        </div>
+                        <div class="w-100">
+                            <label class="form-label">Teléfono</label>
+                            <input id="telefono1" type="text" class="form-control ">
+                        </div>
+                   </div>
+                  
+                   
+               </div>
+               <div class="col-4">
+                    <div class="flex-row">
+                        <div class="w-45 mr-10">
+                            <label class="form-label">Anexo</label>
+                            <input id="anexo2" type="text" class="form-control">
+                        </div>
+                        <div class="w-100">
+                            <label class="form-label">Teléfono 2</label>
+                            <input id="telefono2" type="text" class="form-control ">
+                        </div>
+                    </div>
+               </div>
+               <div class="col-4">
+                    <label for="" class="form-label">Celular</label>
+                    <input id="celular"  onblur="validarCelular()" type="text" class="form-control">
+                    <span id="celularError" class="letra display-none" ></span>
+               </div>
+            </div>
+
+            <div class="marb-1 row">
+                <div class="col-4">
+                    <label for="" class="form-label">Nro. Fax</label>
+                    <input id="fax" type="text" class="form-control">
+                </div>
+                <div class="col-4">
+                    <label for="" class="form-label">Correo Electrónico</label>
+                    <input id="correoElectronico" type="text" class="form-control">
+                </div>
+                <div class="col-4">
+                    <label for="" class="form-label">Página Web</label>
+                    <input id="paginaWeb" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="marb-1 row">
+                <div class="col-4 flex-column" id="situaciones">
+                                    
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="exampleRadios" id="checkAptoParaElEstado" value="option1" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            Apto para contratar con el estado
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="exampleRadios" id="checkRegistroNacional" value="option2">
+                        <label class="form-check-label" for="exampleRadios2">
+                            Registro Nacional del Proveedor
+                        </label>
+                    </div>
+                    <div onchange="tieneRetencion()" class="form-check">
+                        <input class="form-check-input" type="checkbox" name="exampleRadios" id="checkSujetoARetencion" value="option3">
+                        <label class="form-check-label" for="exampleRadios3">
+                            Sujeto a Retención
+                        </label>
+                    </div>
+                       
+                      
+                    
+                </div>
+                <div class="col-4">
+                    <div id="divRetencion" class="display-none">
+                        <label for="" class="form-label">Tipo de Retención (*)</label>
+                        <select name="" id="selectTipoDeRetencion" class="form-control">
+                            <option value="">a</option>
+                            <option value="">a</option>
+                            <option value="">a</option>
+                        </select>
+                    </div>
+                   
+                </div>
+                
+            </div>
+
+        </div>
+
+        <div class="col-9">a</div>
+        <div class="col-3">
+            <button type="button" class="btn btn-dark" onclick="guardar()">Guardar</button>
+            <button type="button" class="btn btn-outline-secondary" onclick="cancelar()">Cancelar</button>
+        </div>
+    </div>
+ 
+    <script src="js.js"></script>
+</body>
+</html>
